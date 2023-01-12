@@ -1,8 +1,8 @@
-# {Company} Postman Collection
+# Corrily Postman Collection
 
-This repository contains a [Postman Collection](/collection.json) for <{docs_url}>.
+This repository contains a [Postman Collection](/collection.json) for <https://docs.corrily.com/api-reference/calculate-price>.
 
-[![Open in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/fern-api/workspace/fern-{cpmpany})
+[![Open in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/fern-api/workspace/fern-corrily)
 
 ## What is a Postman Collection?
 
@@ -10,4 +10,4 @@ This repository contains a [Postman Collection](/collection.json) for <{docs_url
 
 ## Issues
 
-Feel free to [leave an issue](https://github.com/fern-{company}/{company}-postman/issues) on this repo.
+Feel free to [leave an issue](https://github.com/fern-corrily/corrily-postman/issues) on this repo.
