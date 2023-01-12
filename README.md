@@ -1,6 +1,6 @@
 # Corrily Postman Collection
 
-This repository contains a [Postman Collection](/collection.json) for <https://docs.corrily.com/api-reference/calculate-price>.
+This repository contains a [Postman Collection](/collection.json) for the [Corrily API](https://docs.corrily.com/api-reference/calculate-price).
 
 [![Open in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/fern-api/workspace/fern-corrily)
 
