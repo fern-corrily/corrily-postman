@@ -1,0 +1,421 @@
+{
+  "info": {
+    "name": "api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://default.corrily.com/v1",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ],
+    "type": "bearer"
+  },
+  "item": [
+    {
+      "name": "Price",
+      "item": [
+        {
+          "name": "Calculate price",
+          "request": {
+            "description": "Calculate a localized or optimized price for your service or product based on the customer's location and other characteristics.\n\n*Usage*\nThe first time that you call this endpoint for a given IP address and user ID, \nCorrily calculates the price. On subsequent calls (with the same IP address and user ID), Corrily returns the original calculated price.\nSee [Calculate price API examples](https://docs.corrily.com/pricing/calculate-price-api-examples) \nfor examples of how this endpoint is commonly used.\n\n*Price localization*\nIf you're only using Corrily for price localization (i.e. you are not doing price optimization), \nthis is the endpoint that you call in order to get localized prices.\n\n*Price optimization*\nIf you're also doing price optimization, this is the endpoint you call to get optimized prices.\nAs explained in [Price optimization overview](https://docs.corrily.com/pricing/price-optimization-overview), \nCorrily either returns an experimental price or a control price which will be used to benchmark the experimental prices.\n\nExperimental prices are affected by the following factors:\n  - The (potential) customer's location, which is inferred from their IP address\n  - Any user features that you have provided\n  - The outcomes of previous price experiments\n  - The upper and lower bounds that you defined in the Corrily Dashboard\n",
+            "url": {
+              "raw": "{{baseUrl}}/prices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "prices"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"user_id\": \"193.37.32.232\",\n    \"products\": [\n        \"product456\"\n    ],\n    \"ip\": \"193.37.32.232\",\n    \"get_ip_from_request\": true,\n    \"country\": \"US\",\n    \"integrations\": [\n        \"stripe\"\n    ],\n    \"currency\": \"USD\",\n    \"override\": true,\n    \"run_experiment\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Calculate a localized or optimized price for your service or product based on the customer's location and other characteristics.\n\n*Usage*\nThe first time that you call this endpoint for a given IP address and user ID, \nCorrily calculates the price. On subsequent calls (with the same IP address and user ID), Corrily returns the original calculated price.\nSee [Calculate price API examples](https://docs.corrily.com/pricing/calculate-price-api-examples) \nfor examples of how this endpoint is commonly used.\n\n*Price localization*\nIf you're only using Corrily for price localization (i.e. you are not doing price optimization), \nthis is the endpoint that you call in order to get localized prices.\n\n*Price optimization*\nIf you're also doing price optimization, this is the endpoint you call to get optimized prices.\nAs explained in [Price optimization overview](https://docs.corrily.com/pricing/price-optimization-overview), \nCorrily either returns an experimental price or a control price which will be used to benchmark the experimental prices.\n\nExperimental prices are affected by the following factors:\n  - The (potential) customer's location, which is inferred from their IP address\n  - Any user features that you have provided\n  - The outcomes of previous price experiments\n  - The upper and lower bounds that you defined in the Corrily Dashboard\n",
+                "url": {
+                  "raw": "{{baseUrl}}/prices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "prices"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"user_id\": \"193.37.32.232\",\n    \"products\": [\n        \"product456\"\n    ],\n    \"ip\": \"193.37.32.232\",\n    \"get_ip_from_request\": true,\n    \"country\": \"US\",\n    \"integrations\": [\n        \"stripe\"\n    ],\n    \"currency\": \"USD\",\n    \"override\": true,\n    \"run_experiment\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "body": "{\n    \"success\": true,\n    \"user_id\": \"user123\",\n    \"country\": \"SG\",\n    \"currency\": \"SGD\",\n    \"currency_symbol\": \"S$\",\n    \"products\": {\n        \"monthly\": {\n            \"price\": 27,\n            \"price_usd\": 20.05936,\n            \"interval\": \"monthly\",\n            \"interval_count\": 1,\n            \"display\": {\n                \"price\": \"S$ 27\",\n                \"reference_interval_price\": \"S$ 27\",\n                \"price_with_baseline_strike\": \"S$ 27\",\n                \"discount_to_baseline\": 0\n            },\n            \"integrations\": {\n                \"stripe\": {\n                    \"currency\": \"SGD\",\n                    \"amount\": 2700,\n                    \"formatted\": \"S$ 27\"\n                }\n            }\n        },\n        \"annual\": {\n            \"price\": 144,\n            \"price_usd\": 106.98325786308372,\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"display\": {\n                \"price\": \"S$ 144\",\n                \"reference_interval_price\": \"S$ 12\",\n                \"price_with_baseline_strike\": \"S$ 12\",\n                \"discount_to_baseline\": 0\n            },\n            \"integrations\": {\n                \"stripe\": {\n                    \"currency\": \"SGD\",\n                    \"amount\": 14400,\n                    \"formatted\": \"S$ 144\"\n                }\n            },\n            \"coupon\": {\n                \"id\": \"coupon_id_392\",\n                \"type\": \"percentage\",\n                \"value\": 10,\n                \"coupon_source\": \"chargebee\",\n                \"external_coupon_id\": \"chargebee_coupon_392\",\n                \"currency_code\": \"USD\",\n                \"valid_till\": \"2022-02-07 15:49:49\",\n                \"display\": {\n                    \"local_currency_symbol\": \"€\",\n                    \"interval_local_price_formatted\": \"9€\",\n                    \"local_price_formatted\": \"9€\",\n                    \"usd_price_formatted\": 11,\n                    \"local_price_formatted_with_baseline_strike\": \"9 €\",\n                    \"pct_discount_to_baseline\": 0\n                }\n            }\n        }\n    },\n    \"variants\": {\n        \"experimented_on\": true\n    }\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Subscription",
+      "item": [
+        {
+          "name": "Create subscription",
+          "request": {
+            "description": "Notify Corrily that one of your customers has started a subscription.",
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 0,\n    \"country\": \"US\",\n    \"created\": 0,\n    \"currency\": \"USD\",\n    \"origin\": \"stripe\",\n    \"origin_id\": \"string\",\n    \"product\": \"Unknown Type: mixed type\",\n    \"status\": \"trialing\",\n    \"user_id\": \"user123\",\n    \"cancel_at\": 0,\n    \"canceled_at\": 0,\n    \"trial_end\": 0,\n    \"trial_start\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Notify Corrily that one of your customers has started a subscription.",
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"amount\": 0,\n    \"country\": \"US\",\n    \"created\": 0,\n    \"currency\": \"USD\",\n    \"origin\": \"stripe\",\n    \"origin_id\": \"string\",\n    \"product\": \"Unknown Type: mixed type\",\n    \"status\": \"trialing\",\n    \"user_id\": \"user123\",\n    \"cancel_at\": 0,\n    \"canceled_at\": 0,\n    \"trial_end\": 0,\n    \"trial_start\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "body": "{\n    \"properties\": {\n        \"message\": \"[dev=False] subscription record 97#user123#stripe#origin789 was written.\",\n        \"success\": true,\n        \"record\": null,\n        \"origin\": \"stripe\",\n        \"type\": \"subscription\",\n        \"latest_event_timestamp\": 1628549872,\n        \"latest_event_id\": \"corrily_evt_1628549872\",\n        \"corrily_product_id\": 122,\n        \"org_id\": 97,\n        \"origin_id\": \"origin789\",\n        \"user_id\": \"user123\",\n        \"created\": 1628548983,\n        \"interval\": \"month\",\n        \"interval_count\": 1,\n        \"status\": \"active\",\n        \"cancel_at\": null,\n        \"canceled_at\": null,\n        \"trial_start\": null,\n        \"trial_end\": null,\n        \"currency\": null,\n        \"amount\": null,\n        \"amount_usd\": null,\n        \"amount_usd_monthly\": null\n    }\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get subscription",
+          "request": {
+            "description": "Retrieve the details of a single subscription for a single customer.",
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions/:user_id/:origin/:origin_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions",
+                ":user_id",
+                ":origin",
+                ":origin_id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "origin",
+                  "description": "The payment gateway that handled the subscription.",
+                  "value": "paypal"
+                },
+                {
+                  "key": "origin_id",
+                  "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n",
+                  "value": "573917313bb"
+                },
+                {
+                  "key": "user_id",
+                  "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription).",
+                  "value": "user123"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Retrieve the details of a single subscription for a single customer.",
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions/:user_id/:origin/:origin_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions",
+                    ":user_id",
+                    ":origin",
+                    ":origin_id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "origin",
+                      "description": "The payment gateway that handled the subscription.",
+                      "value": "paypal"
+                    },
+                    {
+                      "key": "origin_id",
+                      "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n",
+                      "value": "573917313bb"
+                    },
+                    {
+                      "key": "user_id",
+                      "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription).",
+                      "value": "user123"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "GET"
+              },
+              "body": "{\n    \"success\": true,\n    \"subscription\": {\n        \"corrily_product_id2\": 122,\n        \"latest_event_id\": \"corrily_evt_1628549872\",\n        \"latest_event_timestamp\": 1628549872,\n        \"org_id\": 97,\n        \"origin\": \"stripe\",\n        \"origin_id\": \"origin789\",\n        \"type\": \"subscription\",\n        \"created\": 1628548983,\n        \"interval\": \"month\",\n        \"interval_count\": 1,\n        \"status\": \"active\",\n        \"user_id\": \"user123\"\n    }\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Update subscription",
+          "request": {
+            "description": "Notify Corrily that a subscription has changed.",
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions/:user_id/:origin/:origin_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions",
+                ":user_id",
+                ":origin",
+                ":origin_id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "origin",
+                  "description": "The payment gateway that handled the subscription.",
+                  "value": "paypal"
+                },
+                {
+                  "key": "origin_id",
+                  "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n",
+                  "value": "573917313bb"
+                },
+                {
+                  "key": "user_id",
+                  "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription).",
+                  "value": "user123"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 0,\n    \"cancel_at\": 0,\n    \"canceled_at\": 0,\n    \"created\": 0,\n    \"currency\": \"USD\",\n    \"status\": \"active\",\n    \"trial_start\": 0,\n    \"trial_end\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Notify Corrily that a subscription has changed.",
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions/:user_id/:origin/:origin_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions",
+                    ":user_id",
+                    ":origin",
+                    ":origin_id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "origin",
+                      "description": "The payment gateway that handled the subscription.",
+                      "value": "paypal"
+                    },
+                    {
+                      "key": "origin_id",
+                      "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n",
+                      "value": "573917313bb"
+                    },
+                    {
+                      "key": "user_id",
+                      "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription).",
+                      "value": "user123"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"amount\": 0,\n    \"cancel_at\": 0,\n    \"canceled_at\": 0,\n    \"created\": 0,\n    \"currency\": \"USD\",\n    \"status\": \"active\",\n    \"trial_start\": 0,\n    \"trial_end\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "body": "{\n    \"message\": \"[dev=False] subscription record was written.\",\n    \"success\": true,\n    \"record\": {\n        \"origin\": \"stripe\",\n        \"type\": \"subscription\",\n        \"latest_event_timestamp\": 1628609045,\n        \"latest_event_id\": \"corrily_evt_1628609045\",\n        \"corrily_product_id\": 122,\n        \"org_id\": 97,\n        \"origin_id\": \"o123\",\n        \"user_id\": \"u123\",\n        \"created\": null,\n        \"interval\": \"month\",\n        \"interval_count\": 1,\n        \"status\": \"active\",\n        \"cancel_at\": null,\n        \"canceled_at\": null,\n        \"trial_start\": null,\n        \"trial_end\": null,\n        \"currency\": null,\n        \"amount\": null,\n        \"amount_usd\": null,\n        \"amount_usd_monthly\": null\n    }\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Identify Call",
+          "request": {
+            "description": "Link IPs to users and update user features.\nThe identify endpoint serves three purposes:\n  1. It can be used to pass user-level features after (or before) a price has already been tied to them using the [main price endpoint](https://docs.corrily.com/api-reference/api-reference/calculate-price).\n  2. It can be used to link IPs to user_ids so that prices persist to a user as they see a price -> login in -> check the price again.\n  3. It is used during mobile integrations to inform Corrily about original [Apple](https://docs.corrily.com/integrations/02_apple-iap-integration) and [Google](https://docs.corrily.com/integrations/03_google-iap-integration) purchase IDs.\n",
+            "url": {
+              "raw": "{{baseUrl}}/identify",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "identify"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"user_id\": \"user123\",\n    \"features\": {\n        \"source\": \"youtube\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Link IPs to users and update user features.\nThe identify endpoint serves three purposes:\n  1. It can be used to pass user-level features after (or before) a price has already been tied to them using the [main price endpoint](https://docs.corrily.com/api-reference/api-reference/calculate-price).\n  2. It can be used to link IPs to user_ids so that prices persist to a user as they see a price -> login in -> check the price again.\n  3. It is used during mobile integrations to inform Corrily about original [Apple](https://docs.corrily.com/integrations/02_apple-iap-integration) and [Google](https://docs.corrily.com/integrations/03_google-iap-integration) purchase IDs.\n",
+                "url": {
+                  "raw": "{{baseUrl}}/identify",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identify"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"user_id\": \"user123\",\n    \"features\": {\n        \"source\": \"youtube\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "body": "{\n    \"status\": \"ok\"\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    }
+  ]
+}
