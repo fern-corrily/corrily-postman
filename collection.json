@@ -6,7 +6,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": "https://default.corrily.com/mainapi/v1",
+      "value": "https://default.corrily.com/v1",
       "type": "string"
     },
     {
@@ -213,7 +213,7 @@
               ]
             },
             "header": [],
-            "method": "POST"
+            "method": "DELETE"
           },
           "response": [],
           "_type": "endpoint"
