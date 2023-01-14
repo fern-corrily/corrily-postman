@@ -27,6 +27,201 @@
   },
   "item": [
     {
+      "name": "Charge",
+      "item": [
+        {
+          "name": "Create charge",
+          "request": {
+            "description": "Notify Corrily that one of your customers has initiated a one-time transaction.",
+            "url": {
+              "raw": "{{baseUrl}}/charges",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "charges"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 50,\n    \"amount_refunded\": 0,\n    \"created\": 1662444537,\n    \"currency\": \"USD\",\n    \"country\": \"US\",\n    \"origin\": \"stripe\",\n    \"origin_id\": \"sub_JaHy9Kl6ZMLvId\",\n    \"product\": \"monthly\",\n    \"status\": \"succeeded\",\n    \"user_id\": \"test_user\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Notify Corrily that one of your customers has initiated a one-time transaction.",
+                "url": {
+                  "raw": "{{baseUrl}}/charges",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "charges"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"amount\": 50,\n    \"amount_refunded\": 0,\n    \"created\": 1662444537,\n    \"currency\": \"USD\",\n    \"country\": \"US\",\n    \"origin\": \"stripe\",\n    \"origin_id\": \"sub_JaHy9Kl6ZMLvId\",\n    \"product\": \"monthly\",\n    \"status\": \"succeeded\",\n    \"user_id\": \"test_user\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "body": "",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get charge",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/charges/:user_id/:origin/:origin_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "charges",
+                ":user_id",
+                ":origin",
+                ":origin_id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "origin",
+                  "value": "",
+                  "description": "The payment gateway that handled the subscription."
+                },
+                {
+                  "key": "origin_id",
+                  "value": "",
+                  "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n"
+                },
+                {
+                  "key": "user_id",
+                  "value": "",
+                  "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription)."
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Update charge",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/charges/:user_id/:origin/:origin_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "charges",
+                ":user_id",
+                ":origin",
+                ":origin_id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "origin",
+                  "value": "",
+                  "description": "The payment gateway that handled the subscription."
+                },
+                {
+                  "key": "origin_id",
+                  "value": "",
+                  "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n"
+                },
+                {
+                  "key": "user_id",
+                  "value": "",
+                  "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription)."
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 0,\n    \"created\": 0,\n    \"currency\": \"USD\",\n    \"status\": \"pending\",\n    \"user_id\": \"example\",\n    \"metadata\": \"UNKNOWN\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Delete charge",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/charges/:user_id/:origin/:origin_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "charges",
+                ":user_id",
+                ":origin",
+                ":origin_id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "origin",
+                  "value": "",
+                  "description": "The payment gateway that handled the subscription."
+                },
+                {
+                  "key": "origin_id",
+                  "value": "",
+                  "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n"
+                },
+                {
+                  "key": "user_id",
+                  "value": "",
+                  "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription)."
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
       "name": "Price",
       "item": [
         {
@@ -90,6 +285,42 @@
               "_postman_previewlanguage": "json"
             }
           ],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Create product",
+          "request": {
+            "description": "Create a Corrily product using an API instead of our dashboard.",
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"api_id\": \"example\",\n    \"name\": \"example\",\n    \"base_px\": 0,\n    \"interval\": \"day\",\n    \"interval_count\": 0,\n    \"country_prices\": [\n        {\n            \"country\": \"US\",\n            \"local_currency\": 0,\n            \"currency\": \"USD\"\n        }\n    ],\n    \"integrations\": [\n        {\n            \"type\": \"stripe\",\n            \"stripe_product_id\": \"example\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
           "_type": "endpoint"
         }
       ],
@@ -340,6 +571,89 @@
                 }
               },
               "body": "{\n    \"message\": \"[dev=False] subscription record was written.\",\n    \"success\": true,\n    \"record\": {\n        \"origin\": \"stripe\",\n        \"type\": \"subscription\",\n        \"latest_event_timestamp\": 1628609045,\n        \"latest_event_id\": \"corrily_evt_1628609045\",\n        \"corrily_product_id\": 122,\n        \"org_id\": 97,\n        \"origin_id\": \"o123\",\n        \"user_id\": \"u123\",\n        \"created\": null,\n        \"interval\": \"month\",\n        \"interval_count\": 1,\n        \"status\": \"active\",\n        \"cancel_at\": null,\n        \"canceled_at\": null,\n        \"trial_start\": null,\n        \"trial_end\": null,\n        \"currency\": null,\n        \"amount\": null,\n        \"amount_usd\": null,\n        \"amount_usd_monthly\": null\n    }\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Delete subscription",
+          "request": {
+            "description": "Delete Corrily's record of a subscription.",
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions/:user_id/:origin/:origin_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions",
+                ":user_id",
+                ":origin",
+                ":origin_id"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "origin",
+                  "description": "The payment gateway that handled the subscription.",
+                  "value": "paypal"
+                },
+                {
+                  "key": "origin_id",
+                  "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n",
+                  "value": "573917313bb"
+                },
+                {
+                  "key": "user_id",
+                  "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription).",
+                  "value": "user123"
+                }
+              ]
+            },
+            "header": [],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "originalRequest": {
+                "description": "Delete Corrily's record of a subscription.",
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions/:user_id/:origin/:origin_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions",
+                    ":user_id",
+                    ":origin",
+                    ":origin_id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "origin",
+                      "description": "The payment gateway that handled the subscription.",
+                      "value": "paypal"
+                    },
+                    {
+                      "key": "origin_id",
+                      "description": "A unique identifier for the subscription. \nThis can be the ID that the payment gateway assigned to the subscription.\n",
+                      "value": "573917313bb"
+                    },
+                    {
+                      "key": "user_id",
+                      "description": "The [User ID](https://docs.corrily.com/users/user-characteristics) that you provided when you [created the subscription](https://docs.corrily.com/api-reference/create-subscription).",
+                      "value": "user123"
+                    }
+                  ]
+                },
+                "header": [],
+                "method": "DELETE"
+              },
+              "body": "{\n    \"properties\": {\n        \"message\": \"[dev=False] subscription record 97#user123#stripe#origin789 was written.\",\n        \"success\": true,\n        \"record\": {\n            \"origin\": \"stripe\",\n            \"type\": \"subscription\",\n            \"latest_event_timestamp\": 1628549872,\n            \"latest_event_id\": \"corrily_evt_1628549872\",\n            \"corrily_product_id\": 122,\n            \"org_id\": 97,\n            \"origin_id\": \"origin789\",\n            \"user_id\": \"user123\",\n            \"created\": 1628548983,\n            \"interval\": \"month\",\n            \"interval_count\": 1,\n            \"status\": \"active\",\n            \"cancel_at\": null,\n            \"canceled_at\": null,\n            \"trial_start\": null,\n            \"trial_end\": null,\n            \"currency\": null,\n            \"amount\": null,\n            \"amount_usd\": null,\n            \"amount_usd_monthly\": null\n        }\n    }\n}",
               "_postman_previewlanguage": "json"
             }
           ],
